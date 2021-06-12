@@ -3,6 +3,9 @@ name: vnc-Linux
 on:
   push:
   workflow_dispatch:
+defaults:
+  run:
+    shell: bash
 
 jobs:
   rdp:
