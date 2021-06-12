@@ -19,12 +19,12 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 chmod +x ngrok
 
-# Fourth, generate and copy passwd file and xstartup script
-export PATH=$PATH:/opt/TurboVNC/bin
-mkdir $HOME/.vnc
-cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
-echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
-chmod 0600 $HOME/.vnc/passwd
+# # Fourth, generate and copy passwd file and xstartup script
+# export PATH=$PATH:/opt/TurboVNC/bin
+# mkdir $HOME/.vnc
+# cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
+# echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
+# chmod 0600 $HOME/.vnc/passwd
 
 # Fifth and last, set up auth token from argument
 ./ngrok authtoken $NGROK_AUTH_TOKEN
