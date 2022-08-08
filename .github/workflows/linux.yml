@@ -19,4 +19,4 @@ jobs:
         VNC_DEPTHVALUE: ${{ secrets.VNC_DEPTHVALUE }}
       run: cd $HOME && vncserver :1 -geometry $VNC_SCREENSIZE -depth $VNC_DEPTHVALUE -rfbport 7582
     - name: Creating tunnel with ngrok...
-      run: ./ngrok -log=stdout tcp 7582
+      run: ./ngrok tcp 7582
