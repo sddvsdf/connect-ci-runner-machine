@@ -23,5 +23,5 @@ chmod 0600 $HOME/.vnc/passwd
 #ngrok -log=stdout 80 > /dev/null &
 
 # Fifth and last, set up auth token from argument
-./ngrok -log=stdout authtoken $NGROK_AUTH_TOKEN 
+./ngrok authtoken $NGROK_AUTH_TOKEN &
 exit
