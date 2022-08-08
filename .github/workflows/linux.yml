@@ -30,13 +30,8 @@ jobs:
       id: vars
       run: echo "::set-output name=url::$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
 
-    - name: Comment PR
-      uses: unsplash/comment-on-pr@v1.3.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: 'Live preview URL: ${{ steps.vars.outputs.url }}'
-        check_for_duplicate_msg: false
+    - name: Debug output
+    - uses: hmarr/debug-action@v2
 
     - name: Wait
       run: sleep 300
