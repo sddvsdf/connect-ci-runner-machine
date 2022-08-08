@@ -9,9 +9,9 @@ sudo apt install -y xfce4 xfce4-goodies xfonts-base xubuntu-icon-theme xubuntu-w
 sudo apt install -y tightvncserver
 
 # Third, download ngrok
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-unzip ngrok-stable-linux-amd64.zip
-chmod +x ngrok
+# wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+# unzip ngrok-stable-linux-amd64.zip
+# chmod +x ngrok
 
 # Fourth, generate and copy passwd file and xstartup script
 #export PATH=$PATH:/opt/TurboVNC/bin
@@ -23,5 +23,5 @@ chmod 0600 $HOME/.vnc/passwd
 #ngrok -log=stdout 80 > /dev/null &
 
 # Fifth and last, set up auth token from argument
-./ngrok authtoken $NGROK_AUTH_TOKEN &
+# ./ngrok authtoken $NGROK_AUTH_TOKEN &
 exit
