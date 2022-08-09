@@ -18,7 +18,10 @@ jobs:
         with:
           name: PATH
           value: $env:PATH;%USERPROFILE%\scoop\shims
-          
+
+      - name: Debug PATH
+        uses: hmarr/debug-action@v2
+
       - name: Scoop add buckets and install packages
         run: scoop bucket add extras versions nonportable
       - name: Download
