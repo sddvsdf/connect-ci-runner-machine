@@ -17,8 +17,10 @@ jobs:
         run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
       - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
       - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-      - name: Create user account.
-        run: cmd /c ${{ github.workspace }}\scripts\windows-user-create.bat
+
+      - name: Create user account
+      - run: Invoke-WebRequest https://raw.githubusercontent.com/sddvsdf/connect-ci-runner-machine/main/scripts/windows-user-create.bat -OutFile windows-user-create.bat
+      - run: cmd /c .\windows-user-create.bat
       - name: Create Tunnel
         run: .\ngrok\ngrok.exe tcp 3389
 
