@@ -17,7 +17,7 @@ jobs:
         uses: myci-actions/export-env-var-powershell@1
         with:
           name: PATH
-          value: $env:PATH;"$env:USERPROFILE"\scoop\shims
+          value: $env:PATH;$env:USERPROFILE\scoop\shims
 
       - name: Debug PATH
         uses: hmarr/debug-action@v2
