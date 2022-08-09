@@ -30,11 +30,14 @@ jobs:
       id: vars
       run: echo "::set-output name=url::$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
 
+    - name: Export variable for next jobs
+      uses: UnlyEd/github-action-store-variable@v2.1.0
+      with:
+        variables: |
+          NGROK_ENDPOINT=${{ steps.vars.outputs.url }}
+
     - name: Debug output
       uses: hmarr/debug-action@v2
-      env:
-        NGROK_ENDPOINT: ${{ steps.vars.outputs.url }}
-      run: echo "$NGROK_ENDPOINT"
 
     - name: Wait
       run: sleep 300
