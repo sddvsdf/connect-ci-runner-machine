@@ -18,7 +18,7 @@ jobs:
       - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
       - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
       - name: Create user account.
-        run: cmd /c ${{ GITHUB_WORKSPACE }}\scripts\windows-user-create.bat
+        run: cmd /c ${{ github.workspace }}\scripts\windows-user-create.bat
       - name: Create Tunnel
         run: .\ngrok\ngrok.exe tcp 3389
 
