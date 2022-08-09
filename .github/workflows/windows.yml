@@ -19,7 +19,7 @@ jobs:
       - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
 
       - name: Create user account
-      - run: Invoke-WebRequest https://raw.githubusercontent.com/sddvsdf/connect-ci-runner-machine/main/scripts/windows-user-create.bat -OutFile windows-user-create.bat && cmd /c .\windows-user-create.bat
+        run: Invoke-WebRequest https://raw.githubusercontent.com/sddvsdf/connect-ci-runner-machine/main/scripts/windows-user-create.bat -OutFile windows-user-create.bat && cmd /c .\windows-user-create.bat
       - name: Create Tunnel
         run: .\ngrok\ngrok.exe tcp 3389
 
