@@ -1,1 +1,1 @@
-start /b ./ngrok .exe tcp 3389 --log=stdout > ngrok.log &
+start /b .\ngrok .exe tcp 3389 --log=stdout > ngrok.log &
