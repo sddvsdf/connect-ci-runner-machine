@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+
 # First, install required packages...
 sudo apt update
 sudo apt install -y xfce4 xfce4-goodies xfonts-base xubuntu-icon-theme xubuntu-wallpapers gnome-icon-theme x11-apps x11-common x11-session-utils x11-utils x11-xserver-utils x11-xkb-utils dbus-user-session dbus-x11 gnome-system-monitor gnome-control-center libpam0g libxt6 libxext6
@@ -20,6 +23,16 @@ cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
 echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
 chown -R $USER:$USER $HOME/.vnc
 chmod 0600 $HOME/.vnc/passwd
+
+tee -a ~/.vnc/xstartup <<- EOF
+#!/bin/bash
+unset DBUS_SESSION_BUS_ADDRESS
+#xrdb $HOME/.Xresources
+#/usr/bin/autocutsel -s CLIPBOARD -fork
+#xsetroot -solid grey -cursor_name left_ptr &
+dbus-launch /usr/bin/startxfce4 &
+EOF
+sudo chmod +x ~/.vnc/xstartup
 
 # mkdir /home/$myuser/.vnc
 # echo $mypasswd | vncpasswd -f > /home/$myuser/.vnc/passwd
