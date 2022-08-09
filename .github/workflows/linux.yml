@@ -32,6 +32,9 @@ jobs:
 
     - name: Debug output
       uses: hmarr/debug-action@v2
+      env:
+        NGROK_ENDPOINT: ${{ steps.vars.outputs.url }}
+      run: echo "$NGROK_ENDPOINT"
 
     - name: Wait
       run: sleep 300
