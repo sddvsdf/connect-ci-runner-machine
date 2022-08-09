@@ -12,13 +12,20 @@ sudo apt install -y xfce4 xfce4-goodies xfonts-base xubuntu-icon-theme xubuntu-w
 sudo apt install -y tightvncserver
 
 # Third install packages
-sudo apt-add-repository ppa:flexiondotorg/quickemu
-sudo apt update
-sudo apt install quickemu
+#sudo apt-add-repository ppa:flexiondotorg/quickemu
+#sudo apt update
+#sudo apt install quickemu
 
-sudo add-apt-repository ppa:yannick-mauray/quickgui
-sudo apt update
-sudo apt install quickgui
+#sudo add-apt-repository ppa:yannick-mauray/quickgui
+#sudo apt update
+#sudo apt install quickgui
+
+sudo apt install -y snapd
+sudo apt install -y flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.usebottles.bottles
+
+
 
 # Third, download ngrok
 # wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
