@@ -11,6 +11,15 @@ sudo apt install -y xfce4 xfce4-goodies xfonts-base xubuntu-icon-theme xubuntu-w
 
 sudo apt install -y tightvncserver
 
+# Third install packages
+sudo apt-add-repository ppa:flexiondotorg/quickemu
+sudo apt update
+sudo apt install quickemu
+
+sudo add-apt-repository ppa:yannick-mauray/quickgui
+sudo apt update
+sudo apt install quickgui
+
 # Third, download ngrok
 # wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 # unzip ngrok-stable-linux-amd64.zip
@@ -43,4 +52,9 @@ sudo chmod +x ~/.vnc/xstartup
 
 # Fifth and last, set up auth token from argument
 # ./ngrok authtoken $NGROK_AUTH_TOKEN &
+
+# Fifth and last do something long running
+quickget windows 11
+quickemu --vm windows-11.conf &
+
 exit
