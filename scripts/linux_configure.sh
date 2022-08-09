@@ -20,6 +20,11 @@ cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
 echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
 chmod 0600 $HOME/.vnc/passwd
 
+# mkdir /home/$myuser/.vnc
+# echo $mypasswd | vncpasswd -f > /home/$myuser/.vnc/passwd
+# chown -R $myuser:$myuser /home/$myuser/.vnc
+# chmod 0600 /home/$myuser/.vnc/passwd
+
 #ngrok -log=stdout 80 > /dev/null &
 
 # Fifth and last, set up auth token from argument
