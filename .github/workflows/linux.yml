@@ -40,4 +40,4 @@ jobs:
       uses: hmarr/debug-action@v2
 
     - name: Wait
-      run: sleep 300
+      run: sleep 21000
