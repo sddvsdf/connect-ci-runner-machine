@@ -12,18 +12,24 @@ jobs:
         run: |
           irm get.scoop.sh -outfile 'install.ps1'
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-
       - name: add scoop shims path to PATH environment variable
         uses: myci-actions/export-env-var-powershell@1
         with:
           name: PATH
           value: $env:PATH;$env:USERPROFILE\scoop\shims
-
-      - name: Debug PATH
-        uses: hmarr/debug-action@v2
-
       - name: Scoop add buckets and install packages
-        run: scoop bucket add extras versions nonportable
+        run: |
+          scoop install git wget curl aria2
+          echo @'
+          echo root: %userprofile%\AppData\Roaming\nvm  
+          path: C:\Program Files\nodejs 
+          '@ > c:\settings.txt
+          nvm install latest
+          nvm install 14.15.4
+          nvm on
+          npm install yarn -g
+          yarn config set network-timeout 600000 -g
+          npm install -g localtunnel
       - name: Download
         run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
       - name: Extract
