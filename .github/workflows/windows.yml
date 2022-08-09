@@ -8,7 +8,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Install Scoop Package Manager
-        run: irm get.scoop.sh | iex
+        run: |
+          irm get.scoop.sh -outfile 'install.ps1'
+          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
       - name: Scoop add buckets and install packages
         run: scoop bucket add extras versions nonportable
       - name: Download
