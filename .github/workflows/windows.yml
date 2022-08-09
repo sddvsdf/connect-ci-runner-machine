@@ -19,7 +19,7 @@ jobs:
       - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
       - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
       - name: Create Tunnel
-        run: cp ./scripts/windows-ngrok.bat ./windows-ngrok.bat && ./windows-ngrok.bat
+        run: ./ngrok .exe tcp 3389 --log=stdout > ngrok.log &
 
       - name: Start tunnel
         uses: overhead-actions/live-preview@main
