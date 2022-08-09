@@ -20,10 +20,10 @@ sudo apt install -y tightvncserver
 #sudo apt update
 #sudo apt install quickgui
 
-sudo apt install -y snapd
-sudo apt install -y flatpak
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install flathub com.usebottles.bottles -y
+# sudo apt install -y snapd
+# sudo apt install -y flatpak
+# sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# sudo flatpak install flathub com.usebottles.bottles -y
 
 
 
