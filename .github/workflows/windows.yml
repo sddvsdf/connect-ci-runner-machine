@@ -12,7 +12,13 @@ jobs:
         run: |
           irm get.scoop.sh -outfile 'install.ps1'
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-          $Env:PATH += ";%USERPROFILE%\scoop\shims"
+
+      - name: add scoop shims path to PATH environment variable
+        uses: myci-actions/export-env-var-powershell@1
+        with:
+          name: PATH
+          value: $env:PATH;%USERPROFILE%\scoop\shims
+          
       - name: Scoop add buckets and install packages
         run: scoop bucket add extras versions nonportable
       - name: Download
