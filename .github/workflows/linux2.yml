@@ -43,7 +43,7 @@ jobs:
       run: sleep 210
 
     - name: Run The Other Workflow 
-    - uses: benc-uk/workflow-dispatch@v1
+      uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: vnc-Linux 
         token: ${{ secrets.PERSONAL_TOKEN }}
