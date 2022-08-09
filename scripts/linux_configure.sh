@@ -22,8 +22,8 @@ sudo apt install -y tightvncserver
 
 sudo apt install -y snapd
 sudo apt install -y flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.usebottles.bottles
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.usebottles.bottles -y
 
 
 
@@ -61,7 +61,7 @@ sudo chmod +x ~/.vnc/xstartup
 # ./ngrok authtoken $NGROK_AUTH_TOKEN &
 
 # Fifth and last do something long running
-quickget windows 11
-quickemu --vm windows-11.conf &
+# quickget windows 11
+# quickemu --vm windows-11.conf &
 
 exit
