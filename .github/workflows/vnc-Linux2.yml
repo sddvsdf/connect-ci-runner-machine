@@ -1,4 +1,4 @@
-name: vnc-Linux
+name: vnc-Linux2
 
 on:
   workflow_dispatch:
@@ -45,5 +45,5 @@ jobs:
     - name: Run The Other Workflow 
     - uses: benc-uk/workflow-dispatch@v1
       with:
-        workflow: vnc-Linux2 
+        workflow: vnc-Linux 
         token: ${{ secrets.PERSONAL_TOKEN }}
