@@ -1,0 +1,37 @@
+name: rdp-windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rdp:
+    runs-on: windows-latest
+    steps:
+      - name: Enable TS
+        run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+      - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+      - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+      - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
+
+      - name: Start tunnel
+        uses: overhead-actions/live-preview@main
+        with:
+          protocol: tcp
+          port: 3389
+          ngrok_auth_token: ${{ secrets.NGROK_AUTH_TOKEN }}
+
+      - name: Get URL
+        id: vars
+        run: echo "::set-output name=url::$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
+
+      - name: Export variable for next jobs
+        uses: UnlyEd/github-action-store-variable@v2.1.0
+        with:
+          variables: |
+            NGROK_ENDPOINT=${{ steps.vars.outputs.url }}
+
+      - name: Debug output
+        uses: hmarr/debug-action@v2
+
+      - name: Wait
+        run: sleep 21000
