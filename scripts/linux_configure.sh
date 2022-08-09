@@ -18,6 +18,7 @@ sudo apt install -y tightvncserver
 mkdir $HOME/.vnc
 cp ./resources/xstartup $HOME/.vnc/xstartup.turbovnc
 echo $VNC_USER_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
+chown -R $USER:$USER $HOME/.vnc
 chmod 0600 $HOME/.vnc/passwd
 
 # mkdir /home/$myuser/.vnc
