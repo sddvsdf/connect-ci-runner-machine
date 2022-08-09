@@ -7,6 +7,10 @@ jobs:
   rdp:
     runs-on: windows-latest
     steps:
+      - name: Install Scoop Package Manager
+        run: irm get.scoop.sh | iex
+      - name: Scoop add buckets and install packages
+        run: scoop bucket add extras versions nonportable
       - name: Download
         run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
       - name: Extract
